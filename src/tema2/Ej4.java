@@ -16,6 +16,7 @@ public class Ej4 {
                 persona = loadPersona(persona);
                 y++;
             }
+            y = 0;
             x++;
         }
     
