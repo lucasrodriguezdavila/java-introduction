@@ -7,5 +7,7 @@ public class Ej1 {
         Persona persona = new Persona(Lector.leerString(), Lector.leerInt(), Lector.leerInt());
 
         System.out.println(persona.toString());
+
+
     }
 }
