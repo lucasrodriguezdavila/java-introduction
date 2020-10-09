@@ -12,7 +12,7 @@ public class Ej6 {
         Partido partido = new Partido();
         partido = loadPartido(partido);
         int x = 0;
-        while (x<=20 && partido.getVisitante() != "ZZZ"){
+        while (x<=20 && !partido.getVisitante().equals("ZZZ")){
             partidos[x] = partido;
             partido = loadPartido(partido);
             x++;
