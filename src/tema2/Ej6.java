@@ -9,10 +9,13 @@ public class Ej6 {
     public static void main(String[] args) {
         Partido[] partidos = new Partido[10];
 
-        for (int i =0;i<=9;i++){
-            Partido partido = new Partido();
+        Partido partido = new Partido();
+        partido = loadPartido(partido);
+        int x = 0;
+        while (x<=20 && partido.getVisitante() != "ZZZ"){
+            partidos[x] = partido;
             partido = loadPartido(partido);
-            partidos[i] = partido;
+            x++;
         }
 
         int golesBoca = 0;
