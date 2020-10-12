@@ -37,6 +37,7 @@ public class Ej4 {
                 System.out.println(casting[x][y].toString());
                 y++;
             }
+            y = 0;
             x++;
         }
     }
