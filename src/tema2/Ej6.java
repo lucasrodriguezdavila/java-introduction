@@ -9,43 +9,52 @@ public class Ej6 {
     public static void main(String[] args) {
         Partido[] partidos = new Partido[10];
 
-        Partido partido = new Partido();
-        partido = loadPartido(partido);
+        // bloque de carga de datos (como me gustaria modulizar esto)
+        System.out.println("Introduzca equipo local"); String local = Lector.leerString();
+        System.out.println("Introduzca goles del local"); int golesLocal = Lector.leerInt();
+        System.out.println("Introduzca equipo visitante"); String visitante = Lector.leerString();
+        System.out.println("Introduzca goles del visitante"); int golesVisitante = Lector.leerInt();
+
         int x = 0;
-        while (x<=20 && !partido.getVisitante().equals("ZZZ")){
+        while (x<20 && !visitante.equals("ZZZ")){
+            Partido partido = new Partido();
+            
+            partido.setLocal(local);
+            partido.setGolesLocal(golesLocal);
+            partido.setVisitante(visitante);
+            partido.setGolesVisitante(golesVisitante);
+
             partidos[x] = partido;
-            partido = loadPartido(partido);
+
+            System.out.println("Introduzca equipo local");  local = Lector.leerString();
+            System.out.println("Introduzca goles del local");  golesLocal = Lector.leerInt();
+            System.out.println("Introduzca equipo visitante");  visitante = Lector.leerString();
+            System.out.println("Introduzca goles del visitante");  golesVisitante = Lector.leerInt();
+
             x++;
         }
 
         int golesBoca = 0;
         int ganadosRiver = 0;
         int empates = 0;
-        for (int i =0;i<=9;i++){
-            if (partidos[i].hayEmpate()){
+        x = 0;
+        while  (partidos[x] != null && x <20){
+            if (partidos[x].hayEmpate()){
                 empates++;
-            } else if(partidos[i].getLocal() == "Boca" ){
-                golesBoca += partidos[i].getGolesLocal();
-            } else if(partidos[i].hayGanador() && partidos[i].getGanador() == "River"){
+                System.out.println("Hubo empate");
+            }
+            if(partidos[x].getLocal().equals("Boca")){
+                golesBoca += partidos[x].getGolesLocal();
+
+            }
+            if(partidos[x].hayGanador() && partidos[x].getGanador().equals("River")){
                 ganadosRiver++;
             }
+            x++;
         }
 
         System.out.println("Porcentaje de empates: %"+(empates/10)*100);
         System.out.println("Goles de boca de visitante: "+golesBoca);
         System.out.println("Ganados de river: "+ganadosRiver);
-    }
-
-    public static Partido loadPartido(Partido partido){
-        System.out.println("Introduzca equipo local");
-        partido.setLocal(Lector.leerString());
-        System.out.println("Introduzca goles del local");
-        partido.setGolesLocal(Lector.leerInt());
-
-        System.out.println("Introduzca equipo visitante");
-        partido.setVisitante(Lector.leerString());
-        System.out.println("Introduzca goles del visitante");
-        partido.setGolesVisitante(Lector.leerInt());
-        return partido;
     }
 }
