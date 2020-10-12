@@ -5,15 +5,26 @@ import PaqueteLectura.Lector;
 public class Ej4 {
     public static void main(String[] args) {
         Persona[][] casting = new Persona[5][8];
+        
+        System.out.println("Carga dni"); int dni = Lector.leerInt();
+        System.out.println("Carga nombre"); String nombre = Lector.leerString();
+        System.out.println("Carga edad"); int edad = Lector.leerInt();
 
-        Persona persona = new Persona();
-        persona = loadPersona(persona);
         int x = 0;
         int y = 0;
-        while (persona.getNombre() != "ZZZ" && x<=4){
-            while (persona.getNombre() != "ZZZ" && y<=7){
+        while (!nombre.equals("ZZZ") && x<=4){
+            while (!nombre.equals("ZZZ") && y<=7){
+                Persona persona = new Persona();
+
+                persona.setDNI(dni);
+                persona.setEdad(edad);
+                persona.setNombre(nombre);
+
                 casting[x][y] = persona;
-                persona = loadPersona(persona);
+
+                System.out.println("Carga dni");  dni = Lector.leerInt();
+                System.out.println("Carga nombre");  nombre = Lector.leerString();
+                System.out.println("Carga edad");  edad = Lector.leerInt();
                 y++;
             }
             y = 0;
@@ -26,13 +37,4 @@ public class Ej4 {
             }
         }
     }
-    public static Persona loadPersona(Persona persona) {
-        System.out.println("Introduzca DNI");
-        persona.setDNI(Lector.leerInt());
-        System.out.println("Introduzca nombre");
-        persona.setNombre(Lector.leerString());
-        System.out.println("Introduzca edad");
-        persona.setEdad(Lector.leerInt());
-        return persona;
-    } 
 }
