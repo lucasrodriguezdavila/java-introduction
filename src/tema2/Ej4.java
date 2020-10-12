@@ -30,11 +30,14 @@ public class Ej4 {
             y = 0;
             x++;
         }
-    
-        for(int i = 0;i<=4;i++){
-            for(int j=0;j<=4;j++){
-                System.out.println(casting[i][j].toString());
+        
+        x = 0; y = 0;
+        while (casting[x][y] != null & x <4){
+            while (casting[x][y] != null && y < 7){
+                System.out.println(casting[x][y].toString());
+                y++;
             }
+            x++;
         }
     }
 }
