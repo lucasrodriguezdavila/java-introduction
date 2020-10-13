@@ -1,17 +1,18 @@
 package tema3.Ej4p2;
 
 public class Micro {
-    int patente, horaSalida;
-    String destino;
+    int horaSalida;
+    String destino, patente;
     boolean[] asientos = new boolean[20];
     int asientosOcupados;
 
-    public Micro(int patente, String destino, int horaSalida){
+    public Micro(String patente, String destino, int horaSalida){
         this.patente = patente;
         this.destino = destino;
         this.horaSalida = horaSalida;
+        this.asientosOcupados = 0;
     }
-    public void setPatente(int patente) {
+    public void setPatente(String patente) {
         this.patente = patente;
     }
     public void setDestino(String destino) {
@@ -20,7 +21,7 @@ public class Micro {
     public void setHoraSalida(int horaSalida) {
         this.horaSalida = horaSalida;
     }
-    public int getPatente() {
+    public String getPatente() {
         return patente;
     }
     public String getDestino() {
@@ -33,12 +34,34 @@ public class Micro {
         return asientosOcupados;
     }
     public boolean estaLleno(){
-        int x = 0;
-        for (int i = 0; i<20; i++){
-            if (asientos[i]){
-                x++;
-            }
-        }
-        return asientos.length >= asientosOcupados;
+        return 20 >= asientosOcupados;
     }
+
+    public boolean estaEnRango(int asiento){
+        return asiento-1 >= 0 && asiento-1 < 20;
+    }
+    public boolean estaOcupado(int asiento){
+        return asientos[asiento-1] == true;
+    }
+    public void ocuparAsiento(int asiento){
+        asientos[asiento-1] = true;
+        asientosOcupados++;
+    }
+    public void liberarAsiento(int asiento){
+        asientos[asiento-1] = false;
+        asientosOcupados--;
+    }
+    public int primerAsientoLibre(){
+        int i = 0;
+        boolean found = false;
+        while(found && i<20){
+            if(asientos[i]){
+                found = true;
+                return i+1;
+            }
+            i++;
+        }
+        return -1;        
+    }
+
 }
