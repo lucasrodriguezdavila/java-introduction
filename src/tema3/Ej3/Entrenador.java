@@ -5,6 +5,13 @@ public class Entrenador {
     double sueldo;
     int campeonatos;
 
+    public Entrenador(String nombre, double sueldo, int campeonatos){
+        this.nombre = nombre;
+        this.sueldo = sueldo;
+        this.campeonatos = campeonatos;
+    }
+    public Entrenador(){
+    }
     public String getNombre() {
         return nombre;
     }

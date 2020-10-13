@@ -10,7 +10,8 @@ package tema3;
  */
 public class Libro {
    private String titulo;
-   private String primerAutor; 
+   private Autor primerAutor;
+
    private String editorial;
    private int añoEdicion;
    private String ISBN; 
@@ -27,7 +28,7 @@ public class Libro {
         return añoEdicion;
     }
 
-    public String getPrimerAutor(){
+    public Autor getPrimerAutor(){
         return primerAutor;
     } 
     public String getISBN(){
@@ -49,8 +50,8 @@ public class Libro {
          añoEdicion = unAño;
     }
   
-    public void setPrimerAutor(String unPrimerAutor){
-         primerAutor=unPrimerAutor;
+    public void setPrimerAutor(Autor autor){
+         primerAutor = autor;
     } 
     public void setISBN(String unISBN){
          ISBN=unISBN;
@@ -63,7 +64,7 @@ public class Libro {
    @Override
     public String toString(){
         String aux; // Variable auxiliar utilizada por el metodo. No es parte del estado
-        aux=titulo + " por " + primerAutor + " - " + añoEdicion + " - ISBN: " + ISBN;
+        aux=titulo + " por " + primerAutor.getNombre() + " - " + añoEdicion + " - ISBN: " + ISBN;
        return ( aux);
     }
         
