@@ -42,8 +42,8 @@ public class Flota {
     public Micro getMicroPorPatente(String patente){
         int i = 0;
         boolean stop = false;
-        while(i <20 && !stop){
-            if (flota[i].getPatente().equals(patente)){
+        while(i <15 && !stop){
+            if (flota[i] != null && flota[i].getPatente().equals(patente)){
                 stop = true;
                 return flota[i];
             }
@@ -54,8 +54,8 @@ public class Flota {
     public Micro getMicroPorDestino(String destino){
         int i = 0;
         boolean stop = false;
-        while(i <20 && !stop){
-            if (flota[i].getDestino().equals(destino)){
+        while(i <15 && !stop){
+            if (flota[i] != null && flota[i].getDestino().equals(destino)){
                 stop = true;
                 return flota[i];
             }
