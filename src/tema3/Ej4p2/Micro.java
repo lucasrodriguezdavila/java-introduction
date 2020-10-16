@@ -54,8 +54,8 @@ public class Micro {
     public int primerAsientoLibre(){
         int i = 0;
         boolean found = false;
-        while(found && i<20){
-            if(asientos[i]){
+        while((found ==false) && (i<20)){
+            if(asientos[i]==false){
                 found = true;
                 return i+1;
             }
