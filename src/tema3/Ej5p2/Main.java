@@ -22,6 +22,11 @@ public class Main {
         System.out.println("Ingrese patente para eliminar"); patente = Lector.leerString();
         flota.eliminarMicro(patente);
         System.out.println("Pertence "+patente+" a la flota?: "+(flota.getMicroPorPatente(patente) != null)); 
-
+        
+        System.out.println("Ingrese destino para buscar"); destino = Lector.leerString();
+        if (flota.getMicroPorDestino(destino) != null){
+            System.out.println("Patente a destino "+flota.getMicroPorDestino(destino).getPatente());
+        }
+        
     }
 }

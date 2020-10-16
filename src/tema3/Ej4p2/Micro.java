@@ -36,7 +36,6 @@ public class Micro {
     public boolean estaLleno(){
         return 20 >= asientosOcupados;
     }
-
     public boolean estaEnRango(int asiento){
         return asiento-1 >= 0 && asiento-1 < 20;
     }

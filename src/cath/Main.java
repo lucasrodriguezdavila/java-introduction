@@ -1,4 +1,4 @@
-package tema2.cath;
+package cath;
 import PaqueteLectura.Lector;
 
 public class Main {
@@ -37,12 +37,12 @@ public class Main {
                 // si buscarMicroPatente(patente)== null entonces NO lo encontro
                 System.out.println("MICRO ELIMINADO");
             }else
-                System.out.println("PATENTE: "+flota.buscarMicroPatente(patente)+" NO HA SIDO ELIMINADA");
+                System.out.println("PATENTE: "+flota.buscarMicroPatente(patente).getPatente()+" NO HA SIDO ELIMINADA");
             
             System.out.print("Destino para averiguar micro: ");
             destino=Lector.leerString();
             if (flota.buscarMicroDestino(destino) != null){
-                System.out.println("El micro que va hacia "+destino+" es "+flota.buscarMicroDestino(destino));
+                System.out.println("El micro que va hacia "+destino+" es "+flota.buscarMicroDestino(destino).getPatente());
             }else{
                 System.out.println("Ese micro no existe/ha sido borrado");
             }   

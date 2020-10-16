@@ -1,4 +1,5 @@
-package tema2.cath;
+package cath;
+
 
 public class Micro {
     private String patente;
@@ -10,7 +11,6 @@ public class Micro {
     public Micro(){
         vector=new boolean[19];
     }
-    
     public Micro(String patente,String destino,double horaSalida){
         int i;
         this.patente=patente;
