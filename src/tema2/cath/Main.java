@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args) {
 
         FlotaDeMicros flota = new FlotaDeMicros();
-
         String patente1;
         System.out.print("Patente micro: ");
         patente1=Lector.leerString();
