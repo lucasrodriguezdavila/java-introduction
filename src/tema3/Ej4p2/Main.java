@@ -7,22 +7,28 @@ import PaqueteLectura.Lector;
 
 public class Main {
     public static void main(String[] args) {
-        Micro micro = new Micro("ABC123", "Mar del plata", 500);
+        Micro m = new Micro ("ABC123", "Mar del Plata", "5:00");
+        int asiento;
         
-        System.out.println("Ingrese el asiento que desea reservar:"); int asiento = Lector.leerInt();
-        int primerAsientoLibre;
-
-        while(asiento != -1 && micro.estaLleno()){
-            if (micro.estaOcupado(asiento)){
-                primerAsientoLibre = micro.primerAsientoLibre();
-                System.out.println("Error: este asiento esta ocupado, el primer asiento libre es "+primerAsientoLibre);
-            } else {
-                System.out.println("Asiento "+asiento+" reservado con exito.");
-                micro.ocuparAsiento(asiento);
+        System.out.print("Ingrese asiento a ocupar: ");
+        asiento = Lector.leerInt();
+        
+        while((asiento != -1) && (!m.getestaLleno())){
+            if((m.getEstaEnRango(asiento)==true)){
+                if(m.getEstadoAsiento(asiento) == false){
+                    System.out.println("Asiento: " + asiento + " reservado con éxito.");
+                    m.setOcuparAsiento(asiento);
+                }
+                else{
+                    System.out.println("El asiento está ocupado, el primer asiento libre para ocupar es: " + m.getPrimerAsientoLibre());
+                }
             }
-            System.out.println("Ingrese el asiento que desea reservar:"); asiento = Lector.leerInt();
+            else{
+                System.out.println("El asiento ingresado está fuera de rango.");
+            }
+            System.out.print("Ingrese asiento a ocupar: ");
+            asiento = Lector.leerInt();
         }
-
-        System.out.println(" - Asientos ocupados del micro "+micro.getPatente()+": "+micro.getAsientosOcupados());
+        System.out.println("El micro con patente: " + m.getPatente() + " tiene ocupado: " + m.getCantOcupados());
     }
 }
