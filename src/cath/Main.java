@@ -3,13 +3,11 @@ import PaqueteLectura.Lector;
 
 public class Main {
     public static void main(String[] args) {
-
         FlotaDeMicros flota = new FlotaDeMicros();
-
         String patente1;
+        
         System.out.print("Patente micro: ");
         patente1=Lector.leerString();
-
             while ((!flota.flotaCompleta()) && (!patente1.equals("ZZZ000"))){
                 Micro colectivo = new Micro();
                 colectivo.setPatente(patente1);
@@ -18,26 +16,41 @@ public class Main {
                     colectivo.setDestino(Lector.leerString());
                     System.out.print("Horario salida: ");
                     colectivo.setHoraSalida(Lector.leerDouble());
+                    flota.agregarMicro(colectivo);
                     System.out.print("Patente micro: ");
                     patente1=Lector.leerString();
-                    //agrego el micro a la flota
-                    flota.agregarMicro(colectivo);
                 }
             }
-
             String patente,destino;
             System.out.print("Patente del micro a eliminar: ");
             patente=Lector.leerString();
+
+            //entra al if si se puede eliminar el micro
             if (flota.eliminarMicro(patente)){
                 System.out.println("Se ha borrado el micro");
+                //volvemos a  checkear q se haya eliminado
+                if (flota.buscarMicroPatente(patente) == null){
+                    System.out.println("MICRO ELIMINADO");
+                }else
+                    System.out.println("Micro con patente: "+patente+" NO HA SIDO ELIMINADA");
+
             }else{
                 System.out.println("Ese micro no existia");
             }
-            if (flota.buscarMicroPatente(patente) == null){
-                // si buscarMicroPatente(patente)== null entonces NO lo encontro
-                System.out.println("MICRO ELIMINADO");
-            }else
-                System.out.println("PATENTE: "+flota.buscarMicroPatente(patente).getPatente()+" NO HA SIDO ELIMINADA");
+
+
+            if (flota.eliminarMicro(patente)){
+                //se borra porque existia en la flota
+                if (flota.buscarMicroPatente(patente) == null){
+                    //avisar que se pudo eliminar
+                }else{
+                    //avisar q no se pudo eliminar
+                }
+            }else{
+                //no se borra nada porque no existia el micro en la flota
+                //avisar q ese micro nunca estuvo en la flota
+            }
+           
             
             System.out.print("Destino para averiguar micro: ");
             destino=Lector.leerString();
@@ -47,5 +60,5 @@ public class Main {
                 System.out.println("Ese micro no existe/ha sido borrado");
             }   
     }
-}
         
+}
